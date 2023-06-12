@@ -1,6 +1,6 @@
 const express=require("express")
 
-require("dotenv").config()
+
 
 const{connection}=require("./db")
 
@@ -9,6 +9,8 @@ const{ userRouter}=require("./routes/user.routes")
 const {noteRouter}=require("./routes/note.routes")
 
 const cors=require("cors")
+
+require("dotenv").config()
 
 
 const app= express()

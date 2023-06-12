@@ -1,12 +1,14 @@
 const express=require("express")
 
-require("dotenv").config()
+
 
 const{userModel}=require("../models/user.model")
 //before register hash password use bycrypt
 const bcrypt=require("bcrypt")
 
 const jwt=require("jsonwebtoken")
+
+require("dotenv").config()
 
 const userRouter = express.Router()
 
@@ -23,9 +25,10 @@ userRouter.post("/register",async(req,res)=>{
              else{
                 const user=new userModel({name,email,pass:hash})
                await user.save()
+                res.json({msg:"user has been registered",user:req.body})
             }
       })
-      res.json({msg:"user has been registered",user:req.body})
+     
        
     }catch(err){
         res.json({error:err.message})
